@@ -1,0 +1,6 @@
+---
+# file: isynetservers.yml
+- hosts: isynetservers
+  roles:
+    - mssql
+    - samba

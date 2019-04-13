@@ -1,0 +1,57 @@
+
+- name: install MSSQL with official instructions
+  apt:
+    name: "{{ item }}"
+    state: latest
+    update_cache: yes
+  with_items:
+    - mariadb-server
+    - python-mysqldb
+    - unzip
+ 
+- name: create database
+  mysql_db:
+    name: employees
+    state: present
+ 
+- name: SQL-Benutzer "employees" anlegen
+  mysql_user:
+    name: employees
+    host: "%"
+    password: "{{ employees_password }}"
+    priv: "employees.*:ALL"
+    state: present
+ 
+- name: check ob test_db bereits importiert ist
+  stat:
+    path: /var/lib/mysql/employees/employees.frm
+  register: testdb_imported
+ 
+- name: test_db von Github einspielen
+  unarchive:
+    src: https://github.com/datacharmer/test_db/archive/master.zip
+    dest: /tmp
+    remote_src: yes
+  when: testdb_imported.stat.exists == false
+ 
+- name: Pfade in Importskript anpassen
+  replace:
+    path: /tmp/test_db-master/employees.sql
+    regexp: "source "
+    replace: "source /tmp/test_db-master/"
+  when: testdb_imported.stat.exists == false
+ 
+- name: test_db importieren
+  mysql_db:
+    name: all
+    state: import
+    target: /tmp/test_db-master/employees.sql
+  when: testdb_imported.stat.exists == false
+ 
+- name: MariaDB für Fernzugriff freischalten
+  lineinfile:
+    dest: /etc/mysql/mariadb.conf.d/50-server.cnf
+    regexp: "^bind-address(.+)127.0.0.1"
+    line: "bind-address = 0.0.0.0"
+    backrefs: yes
+  notify: restart mariadb

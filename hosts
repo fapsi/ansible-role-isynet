@@ -1,0 +1,14 @@
+[datenbank]
+167.99.242.69
+ 
+[applikation]
+167.99.242.84
+167.99.242.179
+167.99.242.237
+ 
+[load-balancer]
+167.99.250.42
+ 
+[all:vars]
+ansible_user=root
+ansible_ssh_private_key_file=~/.ssh/id_digitalocean
