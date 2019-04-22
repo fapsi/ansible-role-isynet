@@ -1,6 +1,6 @@
 `Note: This is an early alpha version! Please don't use it in production already. If you're interested please get in contact with me.`
 # ansible-role-isynet
-Ansible roles to backup and build a mssql/samba linux-server (backup W7/W10; build currently only ubuntu 18.04) with an [x.isynet](https://arztsoftware.medatixx.de/software/xisynet/) installation from scratch with the created backup.
+Ansible roles to backup and build a mssql/samba linux-server (backup W7/W10; build currently only ubuntu 18.04) with an [x.isynet](https://arztsoftware.medatixx.de/software/xisynet/) server (and possibly later a client) installation from scratch with the created backup.
 
 ## Dependencies
 
