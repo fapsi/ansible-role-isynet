@@ -14,12 +14,12 @@ Ansible roles to backup and build a mssql/samba linux-server (backup W7/W10; bui
 5) Install and configure `samba`.
 6) Copy files on `samba` share.
 
-## Steps create new client (executed on new windows machine)
+## Steps restore/deploy new master client (executed on new windows machine)
 1) Create Users and install printer drivers, `7zip`.
 2) Install `x.isynet` with remote server and local meddb.
 3) Adapt `c:\WINACS.INI`
 
-## Steps configure backup
+## Steps configure backup (executed on linux server)
 See: gitlab repo TODO
 
 ## FAQ
