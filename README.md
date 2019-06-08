@@ -24,7 +24,7 @@ See: gitlab repo TODO
 
 ## FAQ
 * Why should I use it?
-> Administrating a windows server can be a pain, costly and involves much black box magic. By relying only on mssql for linux as a black box we can bypass or minimize some of those problems. 
+> Administrating a windows server can be a pain, costly and involves much black box magic. By relying only on mssql for linux as a black box we can bypass or minimize some of those problems and provide a clean, constistent, small-sized 2-way backup solution.
 
 > Scaling up the number of running instances. 
 
